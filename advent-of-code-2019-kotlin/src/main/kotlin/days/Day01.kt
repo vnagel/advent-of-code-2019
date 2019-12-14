@@ -1,14 +1,14 @@
 package days
 
-class Day1 : Day(1) {
+class Day01 : Day(1) {
 
-    override fun partOne(): Any {
+    override fun getPartOneSolution(): Any {
         return inputList.take(2)
             .map { it.toUpperCase() }
             .joinToString(" ")
     }
 
-    override fun partTwo(): Any {
+    override fun getPartTwoSolution(): Any {
         return inputString.split("\n")
             .filterNot { it.isEmpty() }
             .map { it.toUpperCase() }

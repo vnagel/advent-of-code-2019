@@ -23,7 +23,7 @@ object Runner {
                 return
             }
 
-            val dayClass = getAllDayClasses()?.find { dayNumber(it.simpleName) == day }
+            val dayClass = getAllDayClasses()?.find { getDayNumber(it.simpleName) == day }
             if (dayClass != null) {
                 printDay(dayClass)
             }
@@ -47,23 +47,23 @@ object Runner {
     }
 
     private fun printDay(dayClass: Class<out Day>) {
-        println("\n=== DAY ${dayNumber(dayClass.simpleName)} ===")
+        println("\n=== DAY ${getDayNumber(dayClass.simpleName)} ===")
         val day = dayClass.constructors[0].newInstance() as Day
 
-        val partOne = measureTimedValue { day.partOne() }
-        val partTwo = measureTimedValue { day.partTwo() }
-        printParts(partOne, partTwo)
+        val partOneSolution = measureTimedValue { day.getPartOneSolution() }
+        val partTwoSolution = measureTimedValue { day.getPartTwoSolution() }
+        printParts(partOneSolution, partTwoSolution)
     }
 
-    private fun printParts(partOne: TimedValue<Any>, partTwo: TimedValue<Any>) {
-        val padding = max(partOne.value.toString().length, partTwo.value.toString().length) + 14        // 14 is 8 (length of 'Part 1: ' + 6 more)
-        println("Part 1: ${partOne.value}".padEnd(padding, ' ') + "(${partOne.duration})")
-        println("Part 2: ${partTwo.value}".padEnd(padding, ' ') + "(${partTwo.duration})")
+    private fun printParts(partOneSolution: TimedValue<Any>, partTwoSolution: TimedValue<Any>) {
+        val padding = max(partOneSolution.value.toString().length, partTwoSolution.value.toString().length) + 14        // 14 is 8 (length of 'Part 1: ' + 6 more)
+        println("Part 1: ${partOneSolution.value}".padEnd(padding, ' ') + "(${partOneSolution.duration})")
+        println("Part 2: ${partTwoSolution.value}".padEnd(padding, ' ') + "(${partTwoSolution.duration})")
     }
 
     private fun printError(message: String) {
         System.err.println("ERROR\n$message")
     }
 
-    private fun dayNumber(dayClassName: String) = dayClassName.replace("Day", "").toInt()
+    private fun getDayNumber(dayClassName: String) = dayClassName.replace("Day", "").toInt()
 }
