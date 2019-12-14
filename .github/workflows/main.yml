@@ -18,6 +18,6 @@ jobs:
         java-version: 1.8
     - name: advent-of-code-kotlin Gradle build
       run: |
-	ls
+        ls
         cd advent-of-code-kotlin
         ./gradlew build
