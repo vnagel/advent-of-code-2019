@@ -1,12 +1,10 @@
 package days
 
-import util.InputReader
+import java.io.File
 
-abstract class Day(dayNumber: Int) {
+abstract class Day(protected val inputString: String) {
 
-    // lazy delegate ensures the property gets computed only on first access
-    protected val inputList: List<String> by lazy { InputReader.getInputAsList(dayNumber) }
-    protected val inputString: String by lazy { InputReader.getInputAsString(dayNumber) }
+    protected val inputList: List<String> = inputString.split("\n")
 
     abstract fun getPartOneSolution(): Any
 

@@ -2,6 +2,7 @@ package util
 
 import days.Day
 import org.reflections.Reflections
+import java.io.File
 import kotlin.math.max
 import kotlin.time.ExperimentalTime
 import kotlin.time.TimedValue
@@ -47,12 +48,20 @@ object Runner {
     }
 
     private fun printDay(dayClass: Class<out Day>) {
-        println("\n=== DAY ${getDayNumber(dayClass.simpleName)} ===")
-        val day = dayClass.constructors[0].newInstance() as Day
-
+        val dayNumber = getDayNumber(dayClass.simpleName)
+        println("\n=== DAY $dayNumber ===")
+        val inputString = readInputString(dayNumber)
+        val day = dayClass.constructors[0].newInstance(inputString) as Day
         val partOneSolution = measureTimedValue { day.getPartOneSolution() }
         val partTwoSolution = measureTimedValue { day.getPartTwoSolution() }
         printParts(partOneSolution, partTwoSolution)
+    }
+
+    private fun readInputString(dayNumber: Int): String {
+        val inputFileName = String.format("input_day_%02d.txt", dayNumber)
+        val inputFile = File(javaClass.classLoader.getResource(inputFileName).toURI())
+        val inputString = inputFile.readText()
+        return inputString
     }
 
     private fun printParts(partOneSolution: TimedValue<Any>, partTwoSolution: TimedValue<Any>) {
