@@ -25,11 +25,11 @@ class Day03(inputString: String) : Day(inputString) {
         }
         // Returns list of points in interval (currentLocation, currentLocation + direction * magnitude]
         fun getMovementPath(direction: Char, magnitude: Int) : List<Point>{
-            when(direction){
-                'U' -> return (1..magnitude).map{Point(x, y + it)}
-                'D' -> return (1..magnitude).map{Point(x, y - it)}
-                'R' -> return (1..magnitude).map{Point(x + it, y)}
-                'L' -> return (1..magnitude).map{Point(x - it, y)}
+            return when(direction){
+                'U' -> (1..magnitude).map{Point(x, y + it)}
+                'D' -> (1..magnitude).map{Point(x, y - it)}
+                'R' -> (1..magnitude).map{Point(x + it, y)}
+                'L' -> (1..magnitude).map{Point(x - it, y)}
                 else -> throw Exception("Unknown direction")
             }
         }
