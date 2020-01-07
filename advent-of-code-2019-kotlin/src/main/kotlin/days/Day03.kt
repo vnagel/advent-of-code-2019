@@ -30,7 +30,7 @@ class Day03(inputString: String) : Day(inputString) {
         return minCombinedSteps ?: throw Exception("No min combined steps")
     }
 
-    data class Point(val x: Int, val y: Int) : Comparable<Point> {
+    private data class Point(val x: Int, val y: Int) : Comparable<Point> {
         companion object {
             val origin = Point(0, 0)
         }
@@ -55,7 +55,7 @@ class Day03(inputString: String) : Day(inputString) {
         }
     }
 
-    fun createWirePath(inputPath: String): List<Point> {
+    private fun createWirePath(inputPath: String): List<Point> {
         val wirePath: MutableList<Point> = arrayListOf(Point.origin)
         for (move in inputPath.split(",")) {
             val direction = move[0]
@@ -66,7 +66,7 @@ class Day03(inputString: String) : Day(inputString) {
         return wirePath
     }
 
-    fun getIntersections(wirePaths: List<List<Point>>): List<Point> {
+    private fun getIntersections(wirePaths: List<List<Point>>): List<Point> {
         val firstPathSet = wirePaths[0].toSet()
         val intersections: MutableList<Point> = ArrayList()
         for (index in 1 until wirePaths.size) {
