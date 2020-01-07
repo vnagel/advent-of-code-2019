@@ -1,6 +1,6 @@
 package days
 
-import com.google.common.truth.Truth
+import com.google.common.truth.Truth.assertThat
 import org.junit.jupiter.api.Test
 
 class Day03Test {
@@ -11,7 +11,7 @@ class Day03Test {
         val day03 = Day03(input)
         val actual = day03.getPartOneSolution()
         val expected = 159
-        Truth.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -21,7 +21,7 @@ class Day03Test {
         val day03 = Day03(input)
         val actual = day03.getPartOneSolution()
         val expected = 135
-        Truth.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -31,7 +31,7 @@ class Day03Test {
         val day03 = Day03(input)
         val actual = day03.getPartTwoSolution()
         val expected = 610
-        Truth.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
     @Test
@@ -41,7 +41,7 @@ class Day03Test {
         val day03 = Day03(input)
         val actual = day03.getPartTwoSolution()
         val expected = 410
-        Truth.assertThat(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
     }
 
 }
