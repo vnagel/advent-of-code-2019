@@ -8,10 +8,18 @@ class Day04Test {
     fun `part 1 password criteria`() {
         // Note: day input is irrelevant
         val day04 = Day04("0-1000000")
-        assertThat(day04.isValidPassword("111111")).isTrue()
-        assertThat(day04.isValidPassword("223450")).isFalse()
-        assertThat(day04.isValidPassword("123789")).isFalse()
-        assertThat(day04.isValidPassword("11111")).isFalse()
-        assertThat(day04.isValidPassword("11111a")).isFalse()
+        assertThat(day04.isValidPart01Password("111111")).isTrue()
+        assertThat(day04.isValidPart01Password("223450")).isFalse()
+        assertThat(day04.isValidPart01Password("123789")).isFalse()
+        assertThat(day04.isValidPart01Password("11111")).isFalse()
+        assertThat(day04.isValidPart01Password("11111a")).isFalse()
+    }
+    @Test
+    fun `part 2 password criteria`() {
+        // Note: day input is irrelevant
+        val day04 = Day04("0-1000000")
+        assertThat(day04.isValidPart02Password("111111")).isFalse()
+        assertThat(day04.isValidPart02Password("123444")).isFalse()
+        assertThat(day04.isValidPart02Password("111122")).isTrue()
     }
 }
